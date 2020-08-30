@@ -4,7 +4,6 @@
 # テーブル設計
 
 ## users テーブル
-
 | Column                | Type   | Options     |
 | ----------------------| ------ | ----------- |
 | email                 | string | null: false ,unique: true|
@@ -13,25 +12,24 @@
 
 ### Association
 - has_many :items
-- has_many :comment
+- has_many :purchases
+- has_many :comments
 - has_one :profile
 
 ## profile テーブル
-
- Column             | Type       | Options     |
+| Column            | Type       | Options     |
 | ------------------| -----------| ----------- |
 | first_name        | string     | null: false |
 | family_name       | string     | null: false |
 | first_name_kana   | string     | null: false |
-| nickname              | string | null: false |
+| nickname          | string     | null: false |
 | family_name_kana  | string     | null: false |
 | birth_year        | date       | null: false |
 | birth_mouth       | date       | null: false |
 | birth_day         | date       | null: false |
-| user_id           | references | null: false, foreign_key: true |
+| user              | references | null: false, foreign_key: true |
 
 ### Association
-
 - belongs_to :user
 
 
@@ -46,48 +44,55 @@
 | category           | string | null: false |
 | status             | string | null: false |
 | price              | integer| null: false |
-| postage_payer	     | string | null: false |
-| preparation_day    | string | null: false |
-| ship_location      | string | null: false |
-| user_id            | references | null: false, foreign_key: true |
-
+| postage_payer_id   | integer| null: false |
+| preparation_day_id | integer| null: false |
+| ship_location_id   | integer| null: false |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
-
 - belongs_to :user
-- has_many :purchase
-- has_many :comment
+- has_many :;purchases
+- has_many :comments
 
- 
+
 ## purchase テーブル
+| Column             | Type   | Options     |
+| -------------------| ------ | ----------- |
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
-| Column           | Type       |   Options   |
-| -----------------| -----------|-------------|
-| card_number      | integer	  | null: false |
-| expiration_year  | integer    | null: false |
-| expiration_mouth | integer	  | null: false |
-| expiration_day   | integer	  | null: false |
-| security_code    | integer	  | null: false |
-| item_id          | references | null: false, foreign_key: true |
 
 ### Association
-
 - bas_one :address
 - belongs_to :item
+- belongs_to :user
+
 
 
 ## address テーブル
 | Column        | Type       | Options     |
 | --------------| ------     | ------------|
-| postal_code   | integer(7) | null: false |
+| postal_code   | string     | null: false |
 | prefectures   | integer    | null: false |
 | city          | string     | null: false |
 | address       | string     | null: false |
 | building      | string     | null: false |
 | tel           | string     | null: false |
-|item_id        | string     | references | null: false, foreign_key: true |
+| item          | references | null: false, foreign_key: true |
 
 ### Association
-
 - belongs_to :purchase
+
+
+## comment テーブル
+| Column        | Type        | Options    |
+| --------------| -----------| ------------|
+| comment       | text       | null: false |
+| user          |references | null: false, foreign_key: true |
+| item          |references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :item
+- belongs_to :user
+
 
