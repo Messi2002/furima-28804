@@ -129,6 +129,9 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
+    parallel (1.19.2)
+    parser (2.7.1.4)
+      ast (~> 2.4.1)
     public_suffix (4.0.5)
     puma (3.12.6)
     rack (2.2.3)
@@ -189,6 +192,7 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.3)
+    rexml (3.2.4)
     rubocop (0.89.1)
       parallel (~> 1.10)
       parser (>= 2.7.1.1)
@@ -275,6 +279,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 6.0.0)
+
   rspec-rails (~> 4.0.0)
   rubocop
   sass-rails (~> 5)
