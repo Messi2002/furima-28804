@@ -10,8 +10,8 @@ class ItemsController < ApplicationController
   def create
     @items = Item.new(item_params)
 
-    if @items.valid?
-      Item.create(item_params)
+    if @items.save(item_prams)
+      #Item.create(item_params)
       redirect to items_path
     else
       render 'new'
