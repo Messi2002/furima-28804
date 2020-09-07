@@ -28,15 +28,13 @@
 | -------------------| ------ | ----------- |
 | item               | string | null: false |
 | introduction       | text   | null: false |
-| image              | string | null: false |
-| detail             | text   | null: false |
-| category           | integer| null: false |
-| status             | integer| null: false |
+| category_id        | integer| null: false |
+| status_id          | integer| null: false |
 | price              | integer| null: false |
 | postage_payer_id   | integer| null: false |
 | preparation_day_id | integer| null: false |
 | ship_location_id   | integer| null: false |
-| user               | references | null: false, foreign_key: true |
+| user-id            | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
