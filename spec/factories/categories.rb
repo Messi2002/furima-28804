@@ -1,8 +1,7 @@
 FactoryBot.define do
   factory :item do
     association :user
-    # item                  { Faker::Base.regexify("[aあ]{40}")}
-    # introduction          { Faker::Base.regexify("[aあ]{1000}")}
+    
     item { 'アイテム' }
     introduction          { '説明' }
     category_id           { 2 }
