@@ -1,17 +1,17 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:new] 
   def index
     @items = Item.all
   end
-
+  
   def new
     @items = Item.new
   end
-
+  
   def create
     @items = Item.new(item_params)
 
     if @items.save(item_prams)
-      #Item.create(item_params)
       redirect to items_path
     else
       render 'new'
