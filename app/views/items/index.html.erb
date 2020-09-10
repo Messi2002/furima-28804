@@ -125,12 +125,18 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%=link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
+    
+
      <% if @items[0] != nil %>
+    
       <li class='list'>
         <%  @items.each do |item| %>
+         
         <div class='item-img-content'>
-          <%= image_tag item.image, class: 'item-img' if item.image.attached?%>
-        </div>
+          
+           
+           <%=link_to image_tag item.image, class: 'item-img' if item.image.attached? , item_path(item.id),  method: :get %>
+         
         <% if item.purchase != nil %>
              <div class='sold-out'>
               <span>Sold Out!!</span>
@@ -176,9 +182,12 @@
 
 <div class='purchase-btn'>
  <span class='purchase-btn-text'>出品する</span>
-    <a href= "/items/new" >
+    <a href="/items/new">
    <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
    </a>
 </div>
 
 <%= render "shared/footer" %>
+
+           <%#image_tag item.image, class: 'item-img' if item.image.attached?%>
+       
