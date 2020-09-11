@@ -36,8 +36,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @items.destroy
-    redirect_to items_path
+    if @items.destroy
+         redirect_to items_path
+    else
+         render 'show' 
+    end
   end
 
   def set_item
