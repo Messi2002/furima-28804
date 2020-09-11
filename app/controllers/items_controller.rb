@@ -23,6 +23,21 @@ class ItemsController < ApplicationController
     @items = Item.find(params[:id])
   end
 
+  def edit
+    @items = Item.find(params[:id])
+  end
+
+  def update
+    @items = Item.find(params[:id])
+    @items.update(item_params)
+    if @items.valid?
+      @items.save
+      render 'show'
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def item_params
