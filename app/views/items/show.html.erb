@@ -16,7 +16,7 @@
       </div>
       <% end %>
 
-      <%# //商品が売れている場合は、sold outの表示をしましょう。 %>
+      
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -27,18 +27,19 @@
       </span>
     </div>
 
+
    
   
 <% if user_signed_in? && current_user.id == @items.user.id %>
    <%= link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn" %>
     <p class='or-text'>or</p>
-    <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
+    <%= link_to '削除', item_path(@items.id), method: :delete, class:'item-destroy' %>
  <% else %>
    <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
 <% end %>
     
- 
-  
+    
+  <% if user_signed_in? && current_user.id == @items.user_id %>
     <div class="item-explain-box">
       <span><%= @items.introduction %></span>
     </div>
@@ -70,7 +71,10 @@
         </tr>
       </tbody>
     </table>
-    
+
+
+  <%end%>
+
     <div class="option">
       <div class="favorite-btn">
         <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
