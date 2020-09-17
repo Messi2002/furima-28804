@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Purchase, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'IDの保存' do
+    before do
+      @purchase = FactoryBot.build(:purchase)
+    end
+    it 'すべての値が正しく入力されていれば保存できること' do
+      expect(@purchase).to be_valid
+    end
+    
+  end
 end
