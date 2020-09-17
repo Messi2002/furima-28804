@@ -1,9 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-
+  before_action :set_order, only: [:index, :create]
   def index
-    
-    @items = Item.find(params[:item_id])
     if @items.purchase != nil || current_user.id == @items.user_id 
       redirect_to items_path
     end
@@ -11,8 +9,6 @@ class OrdersController < ApplicationController
   end
   
   def create
-    
-    @items = Item.find(params[:item_id])
     @order = PurchaseOrder.new(order_params)
    
     if @order.save
@@ -23,9 +19,11 @@ class OrdersController < ApplicationController
     end
    
   end
-  
-  
   private
+  def set_order
+    @items = Item.find(params[:item_id])
+  end
+
   def pay_item
       Payjp.api_key = "sk_test_84f6a2fd96f9c172ba08616d"
       Payjp::Charge.create(
