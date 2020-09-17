@@ -10,6 +10,6 @@ FactoryBot.define do
     postage_payer_id      { 2 }
     preparation_day_id    { 2 }
     ship_location_id      { 2 }
-    detail                { 2 }
+
   end
 end
