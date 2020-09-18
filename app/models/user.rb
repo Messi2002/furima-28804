@@ -4,8 +4,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true, format: { with: /\A[a-zA-Z0-9]+\z/ }, length: { minimum: 6 }
-  validates :password_confirmation, presence: true, format: { with: /\A[a-zA-Z0-9]+\z/ }, length: { minimum: 6 }
+  validates :password, presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
+  validates :password_confirmation, presence: true, format: {with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
 
   validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
   validates :family_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
