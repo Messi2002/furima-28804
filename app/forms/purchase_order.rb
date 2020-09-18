@@ -8,7 +8,7 @@ class PurchaseOrder
   validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
   validates :prefecture, numericality: { other_than: 0, message: "can't be blank" }
   validates :phone_number, presence: true, format: {with: /\A\d{11}\z/}
-  validates :city, :house_number, :purchase_id, presence: true
+  validates :city, :house_number,  presence: true
   
   def save
    pu = Purchase.create(item_id: item_id, user_id: user_id) 
