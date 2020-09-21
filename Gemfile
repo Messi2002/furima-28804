@@ -68,6 +68,11 @@ end
 
 group :development, :test do
   gem 'rails-erd'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 
