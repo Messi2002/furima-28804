@@ -18,4 +18,13 @@ class Item < ApplicationRecord
 
                     numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
   validates :item, :introduction, :image, presence: true
+  
+  def self.search(search)
+    if search != ""
+      Item.where('item LIKE(?)', "%#{search}%")
+    else
+      Item.all
+    end
+  end
+
 end
